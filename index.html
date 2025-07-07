@@ -128,7 +128,7 @@ button:hover {
    import { getDatabase, ref, set, onValue } from "https://www.gstatic.com/firebasejs/10.5.0/firebase-database.js";
 
    const firebaseConfig = {
-     apiKey: "",
+     apiKey: "AIzaSyAfWHKmXad82HBw0zU-8k1t5OGKP5zhAdA",
      authDomain: "timer-ishikawa.firebaseapp.com",
      databaseURL: "https://timer-ishikawa-default-rtdb.asia-southeast1.firebasedatabase.app",
      projectId: "timer-ishikawa",
@@ -226,6 +226,8 @@ function updateClockTime() {
          document.getElementById("display" + i).innerText = formatTime(data.time);
        }
      });
+     setupEnterKeyToStart(i, name); // ← これを追加
+
    });
 
   function formatTime(seconds) {
@@ -284,6 +286,23 @@ function updateClockTime() {
      document.getElementById("s" + i).value = s;
 
    };
+
+   // 共通：Enterキーでスタート発火
+function setupEnterKeyToStart(i, name) {
+  const quick = document.getElementById(`quick${i}`);
+  const h = document.getElementById(`h${i}`);
+  const m = document.getElementById(`m${i}`);
+  const s = document.getElementById(`s${i}`);
+
+  [quick, h, m, s].forEach(input => {
+    input.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') {
+        startTimer(name, i);
+      }
+    });
+  });
+}
+
    window.resetTimer = function (name, i) {
  clearInterval(intervals[name]);
 
