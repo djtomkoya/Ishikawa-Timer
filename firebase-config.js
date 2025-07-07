@@ -1,4 +1,4 @@
-window.firebaseConfig = {
+const firebaseConfig = {
   apiKey: "AIzaSyAfWHKmXad82HBw0zU-8k1t5OGKP5zhAdA",
   authDomain: "timer-ishikawa.firebaseapp.com",
   databaseURL: "https://timer-ishikawa-default-rtdb.asia-southeast1.firebasedatabase.app",
